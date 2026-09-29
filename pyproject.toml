@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "webdiff"
+version = "0.1.0"
+description = "Compare public web assets using cryptographic fingerprints and similarity analysis."
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.31.0",
+    "beautifulsoup4>=4.12.0",
+]
+
+[project.scripts]
+webdiff = "webdiff.cli:main"
