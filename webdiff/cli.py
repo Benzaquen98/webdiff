@@ -1,6 +1,7 @@
 import argparse
 
 from webdiff.comparator import compare_sites
+from webdiff.crawler import FetchError
 
 def format_similarity(value):
     if value is None:
@@ -22,7 +23,10 @@ def main():
         help="Second website URL."
     )
     args = parser.parse_args()
-    result = compare_sites(args.url_a, args.url_b)
+    try:
+        result = compare_sites(args.url_a, args.url_b)
+    except FetchError as error:
+        parser.exit(1, f"WebDiff error: {error}\n")
     print()
     print("WebDiff")
     print("=======")
